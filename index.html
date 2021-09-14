@@ -1,188 +1,51 @@
-<Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="25"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+<!DOCTYPE html>
+<html>
+  <head>    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" name="viewport" />
 
-        <Border Grid.ColumnSpan="2"
-                Background="#252525"
-            MouseDown="Header_Border_MouseDown">
+    <!-- section:seometa -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Discord" />
+    <meta property="og:title" content="Discord - A New Way to Chat with Friends & Communities" />
+    <meta
+      property="og:description"
+      content="Discord is the easiest way to communicate over voice, video, and text.  Chat, hang out, and stay close with your friends and communities."
+    /><meta property="og:image" content="https://discord.com/assets/f5763d63baa119d101154db94a49a281.png" />    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@discord" />
+    <meta name="twitter:creator" content="@discord" />
+    <!-- endsection -->
+<link rel="stylesheet" href="/assets/0.85eb73749334727b0169.css" integrity="sha256-98+FM+rl6TVMtABDMmggaD63fdwroqcyKgdoKWGfwD4= sha512-wD8tJL0aLVoviFbi4Dkpnk5Goj/4/zc+oeGCDvL5OZAS30MictNh+NP42qqz9JnxINt8GHucUQaubZNzTqhkpg=="><link rel="icon" href="/assets/847541504914fd33810e70a0ea73177e.ico" />    <!-- section:title -->
+    <title>Discord</title>
+    <!-- endsection -->
+  </head>
 
-
-            <Grid HorizontalAlignment="Stretch">
-                <Label Content="Bloxcord"
-                       Foreground="Gray"
-                       FontWeight="SemiBold"/>
-
-
-                <StackPanel HorizontalAlignment="Right"
-                            Orientation="Horizontal">
-
-                    <Button Width="20" Height="20"
-                            Content="_"
-                            Background="Transparent"
-                            BorderThickness="0"
-                            Foreground="Gray"
-                            FontWeight="Bold"
-                            Margin="0,0,0,3" 
-                            Click="ButtonMinimize_Click"/>
-
-                    <Button Width="20" Height="20"
-                            Content="□"
-                            Background="Transparent"
-                            BorderThickness="0"
-                            Foreground="Gray"
-                            FontWeight="Bold"
-                            Click="BigScreen_Button"/>
-
-                    <Button Width="20" Height="20"
-                            Content="X"
-                            Background="Transparent"
-                            BorderThickness="0"
-                            Foreground="Gray"
-                            FontWeight="Bold"
-                            Click="Exit_Button"/>
-
-
-                </StackPanel>
-            </Grid>
-
-        </Border>
-
-        <Grid Background="#2f3136"
-              Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
-                <RowDefinition/>
-                <RowDefinition Height="50"/>
-            </Grid.RowDefinitions>
-
-            <Label Content="Friends"
-                   VerticalAlignment="Center"
-                   FontWeight="Medium"
-                   Foreground="Gray"
-                   Margin="8"
-                   FontSize="20"/>
-
-            <ListView ItemsSource="{Binding Servers}"
-                      Background="Transparent"
-                      BorderThickness="0"
-                      Grid.Row="1"
-                      ItemContainerStyle="{StaticResource ServerCard}" Margin="0,0,151,0" SelectionChanged="ListView_SelectionChanged"/>
-
-            <StackPanel Grid.Row="2"
-                    Orientation="Horizontal"
-                        Background="#292b2f">
-
-                <Border
-                    CornerRadius="25"
-                    Width="30" Height="30"
-                    Background="#3bff6f"
-                    Margin="18,0,0,0"/>
-
-                <StackPanel VerticalAlignment="Center">
-                    <Label Content="Lola"
-                    Foreground="White"
-                    FontWeight="SemiBold"
-                    FontSize="15"
-                    Margin="0,-5,0,-5"/>
-                    <Label Content="Online"
-                    Foreground="Green"
-                    FontWeight="Medium"
-                    FontSize="10"
-                    Margin="0,-8,0,-5"/>
-                </StackPanel>
-
-            </StackPanel>
-            <ListView ItemsSource="{Binding Contact}"
-                Background="Transparent"
-                BorderThickness="0"
-                Grid.Row="1"
-                ItemContainerStyle="{StaticResource ContactCard}" Margin="54,0,0,0"/>
-
-        </Grid>
-
-        <Grid Grid.Column="1"
-            Grid.Row="1">
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
-                <RowDefinition/>
-                <RowDefinition Height="70"/>
-            </Grid.RowDefinitions>
-
-            
-            <Border>
-                <Grid HorizontalAlignment="Stretch"
-                      Margin="8">
-
-                    <Label Content="@Username"
-                           Background="#2f3136"
-                           Foreground="White"
-                           FontWeight="Bold"
-                           Margin="5,0,0,0"/>
-
-                    <StackPanel Orientation="Horizontal"
-                                HorizontalAlignment="Right">
-                        <Image Width="20" Height="20"
-                           RenderOptions.BitmapScalingMode="Fant"
-                           Margin="5,0,5,0"
-                        Source="./Icons/Phone.png"/>
-
-                        <Image Width="20" Height="20"
-                           RenderOptions.BitmapScalingMode="Fant"
-                           Margin="5,0,5,0"
-                        Source="./Icons/Camera.png"/>
-                    </StackPanel>
-                </Grid>
-            </Border>
-
-
-            <ListView ItemsSource="{Binding SelectedContact.Messages}"
-                   Background="Transparent"
-                    BorderThickness="0"
-                    ItemContainerStyle="{StaticResource ChatItem}"
-                    Margin="8,0,0,0"
-                    Grid.Row="1"/>
-
-            <Grid Grid.Row="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="90"/>
-
-                </Grid.ColumnDefinitions>
-
-                <TextBox Grid.Row="1"
-                         Height="50"
-                         Text="Message @Username"
-                         Style="{StaticResource MessageBox}"
-                         Grid.ColumnSpan="2"/>
-
-                <StackPanel Orientation="Horizontal"
-                            HorizontalAlignment="Right"
-                            Grid.Column="1"
-                            Margin="0,0,-11,0">
-
-                    <Image Source="./Icons/Plus.png"
-                           Width="30" Height="20"
-                           RenderOptions.BitmapScalingMode="Fant"
-                           Margin="5,5,-4,0"/>
-
-                    <Image Source="./Icons/Send.png"
-                           Width="30" Height="20"
-                           RenderOptions.BitmapScalingMode="Fant"
-                           Margin="5,5,16,0"/>
-
-
-                </StackPanel>
-
-            </Grid>
-            
-        </Grid>
-
-    </Grid>
+  <body>
+    <div id="app-mount"></div><script nonce="MTA2LDg2LDExMCwxODUsMTQxLDM2LDExOSwxNw==">window.__OVERLAY__ = /overlay/.test(location.pathname)</script><script nonce="MTA2LDg2LDExMCwxODUsMTQxLDM2LDExOSwxNw==">window.__BILLING_STANDALONE__ = /^\/billing/.test(location.pathname)</script><script nonce="MTA2LDg2LDExMCwxODUsMTQxLDM2LDExOSwxNw==">window.GLOBAL_ENV = {
+        API_ENDPOINT: '//discord.com/api',
+        API_VERSION: 9,
+        GATEWAY_ENDPOINT: 'wss://gateway.discord.gg',
+        WEBAPP_ENDPOINT: '//discord.com',
+        CDN_HOST: 'cdn.discordapp.com',
+        ASSET_ENDPOINT: 'https://discord.com',
+        MEDIA_PROXY_ENDPOINT: 'https://media.discordapp.net',
+        WIDGET_ENDPOINT: '//discord.com/widget',
+        INVITE_HOST: 'discord.gg',
+        GUILD_TEMPLATE_HOST: 'discord.new',
+        GIFT_CODE_HOST: 'discord.gift',
+        RELEASE_CHANNEL: 'stable',
+        MARKETING_ENDPOINT: '//discord.com',
+        BRAINTREE_KEY: 'production_5st77rrc_49pp2rp4phym7387',
+        STRIPE_KEY: 'pk_live_CUQtlpQUF0vufWpnpUmQvcdi',
+        NETWORKING_ENDPOINT: '//router.discordapp.net',
+        RTC_LATENCY_ENDPOINT: '//latency.discord.media/rtc',
+        ACTIVITY_APPLICATION_HOST: 'discordsays.com',
+        PROJECT_ENV: 'production',
+        REMOTE_AUTH_ENDPOINT: '//remote-auth-gateway.discord.gg',
+        SENTRY_TAGS: {"buildId":"0ca818c","buildType":"normal"},
+        MIGRATION_SOURCE_ORIGIN: 'https://discordapp.com',
+        MIGRATION_DESTINATION_ORIGIN: 'https://discord.com',
+        HTML_TIMESTAMP: Date.now(),
+        ALGOLIA_KEY: 'aca0d7082e4e63af5ba5917d5e96bed0',
+      };</script><script nonce="MTA2LDg2LDExMCwxODUsMTQxLDM2LDExOSwxNw==">!function(){if(null!=window.WebSocket){if(function(n){try{var e=localStorage.getItem(n);return null==e?null:JSON.parse(e)}catch(n){return null}}("token")&&!window.__OVERLAY__){var n=null!=window.DiscordNative||null!=window.require?"etf":"json",e=window.GLOBAL_ENV.GATEWAY_ENDPOINT+"/?encoding="+n+"&v="+window.GLOBAL_ENV.API_VERSION+"&compress=zlib-stream";console.log("[FAST CONNECT] connecting to: "+e);var o=new WebSocket(e);o.binaryType="arraybuffer";var t=Date.now(),i={open:!1,identify:!1,gateway:e,messages:[]};o.onopen=function(){console.log("[FAST CONNECT] connected in "+(Date.now()-t)+"ms"),i.open=!0},o.onclose=o.onerror=function(){window._ws=null},o.onmessage=function(n){i.messages.push(n)},window._ws={ws:o,state:i}}}}();</script><script src="/assets/305f116e27f7e3d7f878.js" integrity="sha256-1BpVH4ibU+hFnDdqcF174ob8+fzzwHgwygX37gzev24= sha512-IjAJdpjK23U70ymEQ7IyPbCYIg5YwysyCw0c4YJeHeJF1KBPQxOg1WPXPOSNo7CxsoCWGWkJdYFKG25N3zixng=="></script><script src="/assets/752e508bbf063aa19ac0.js" integrity="sha256-wjhjN03X0ygjUaJ+oiKxGSujQpK2+nMpNWclHlHfIvI= sha512-YVXN2I/xETAtLCd8WOZFbrhS2jGyOT4htc/kDdiOIKvTDSapXhs5i8UsWDBF8Yk2Z/8VC6mrBHrfMRwnnSa4ig=="></script><script src="/assets/b3df39eae41ff915a8e3.js" integrity="sha256-Z8VS+BPbFS+r3+enyftgPmFUwbl/Wg+f+CgjLa/ZaBI= sha512-0FBOKSksiQRhpgS8OV/sbrXFeEqDrpGUTM4qFNTQBqXiem7Bbvq+yEnjov9KJP7l8KmdOgfitsAcf9vsXZIJZQ=="></script><script src="/assets/64047898bf3d2c0d2338.js" integrity="sha256-9UJGzcnYL7oWUvfqaWvrVuuVCbMHst754o1hPIdB2q8= sha512-FaxC8l657bGvolcVC3gRjrWKKfT59yjcnvGWw9vFHF0A8s65v3juAkCIit3Gh8Sza16Hsfn7lDJyTKjx+FTHKA=="></script>  </body>
+</html>
